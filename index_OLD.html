@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en"> 
+
+    <script>
+
+    function includeHTML() {
+    var z, i, elmnt, file, xhttp;
+    /*loop through a collection of all HTML elements:*/
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+        /*make an HTTP request using the attribute value as the file name:*/
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+            /*remove the attribute, and call this function once more:*/
+            elmnt.removeAttribute("w3-include-html");
+            includeHTML();
+            }
+        }      
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        /*exit the function:*/
+        return;
+        }
+    }
+    };
+
+    </script>
+
+    <head>
+        <title>FWD</title>
+        <meta charset="UTF-8">
+        <meta name=""viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <!-- head definitions go here -->
+    </head>
+
+    <body>
+        
+        <div w3-include-html="menu.html" style="text-align: center;"></div> 
+
+        <h1>FWD Web Development 2024</h1>
+
+        <p>
+            This in an introduction to HTML, where we are practising by building a website.
+        </p>
+        <!-- 
+        <h1>Hello</h1>
+        <p>This is a paragraph</p>
+        <a href="https://www.bbc.co.uk">Link</a>
+        <p>No auto closing tag</p>
+        <h2>heading 2 text</h2>
+        -->
+        <p>
+            <a 
+                href="portfolio.html"
+                target="_blank"
+                alt="Barry's profile page (opens in new window)" 
+                title="Barry's profile page (opens in new window)">
+                Barry's profile page
+            </a>
+        </p>
+        <p>Please take a look at our 
+            <a 
+                target="_blank"
+                href="https://www.facebook.com/people/Bath-Gateway-Out-and-About/100064459371326/">
+                Facebook
+            </a> page
+            </p>
+
+        <img src="images/map.png" width=500 
+        alt="Map walking from BA2 3DA to BSU Newton campus" 
+        title="Map walking from BA2 3DA to BSU Newton campus">
+ 
+        <p>Please take a look at our 
+            <a 
+                target="_blank"
+                href="https://www.facebook.com/people/Bath-Gateway-Out-and-About/100064459371326/">Facebook
+            </a> page<img src="images/map.png" 
+            width=500 alt="Map walking from BA2 3DA to BSU Newton campus" 
+            title="Map walking from BA2 3DA to BSU Newton campus"></p>
+        
+     </body>
+
+     <script>
+        includeHTML();
+    </script>
+
+</html>

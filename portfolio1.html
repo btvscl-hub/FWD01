@@ -2,38 +2,6 @@
 
 <html lang="en">
 
-    <script>
-
-        function includeHTML() {
-          var z, i, elmnt, file, xhttp;
-          /*loop through a collection of all HTML elements:*/
-          z = document.getElementsByTagName("*");
-          for (i = 0; i < z.length; i++) {
-            elmnt = z[i];
-            /*search for elements with a certain atrribute:*/
-            file = elmnt.getAttribute("w3-include-html");
-            if (file) {
-              /*make an HTTP request using the attribute value as the file name:*/
-              xhttp = new XMLHttpRequest();
-              xhttp.onreadystatechange = function() {
-                if (this.readyState == 4) {
-                  if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-                  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-                  /*remove the attribute, and call this function once more:*/
-                  elmnt.removeAttribute("w3-include-html");
-                  includeHTML();
-                }
-              }      
-              xhttp.open("GET", file, true);
-              xhttp.send();
-              /*exit the function:*/
-              return;
-            }
-          }
-        };
-
-    </script>
-
     <head>
         <title>Barry Vincent's portfolio</title>
         <meta charset="UTF-8">
@@ -47,36 +15,52 @@
 
     <body align="center">
 
-        <div style="text-align: center;">
+        <!-- Menu - fixed and always shown at the top of the page -->
 
-            <div style="display: inline-block; width: 520px">
+        <div style="text-align: center; margin: auto;">
 
-            <div w3-include-html="menu.html">&nbsp;</div>
+            <div style="display: inline-block; width: 520px; max-width: 520px;">
+
+                <div class="navbar" style="width: 520px;">
+
+                    <a href="portfolio1.html">Home</a>
+                    <a href="portfolio1.html#about">About me</a>
+                    <a href="gallery1.html">My photos</a>
+                    <a href="portfolio1.html#services">Services</a>
+                    <a href="portfolio1.html#contact">Contact</a>
+                
+                </div>
+
+            </div>
 
         </div>
+
+        <!-- Main page - scrolled compared to the fixed menu at the top -->
+
+        <div class="main" id="about">
         
-        <h1>Barry Vincent - profile</h1> 
+            <h1>Barry Vincent - profile</h1> 
 
-        <img src="images/BarryVincent.jpg" height="340px">
+            <img src="images/BarryVincent.jpg" height="340px">
 
-        <p>
-            <b>Hello</b> and welcome to my <u>personal profile</u> web page.<br>
-            <i>Copyright &copy 2024 B.T. Vincent - all rights reserved</i>
-        </p>
+            <p>
+                <b>Hello</b> and welcome to my <u>personal profile</u> web page.<br>
+                <i>Copyright &copy 2024 B.T. Vincent - all rights reserved</i>
+            </p>
 
-        <div style="display: inline-block; text-align: left; max-width: 520px">
+            <div style="display: inline-block; text-align: left; max-width: 520px">
 
-                <h3 id="about">About me</h3>
+                <h3>About me</h3>
 
                 <p>
                     I was born in <u>London</u> and grew up in <u>Norfolk</u>, and have 
                     lived in <u><emi><b><a href="https://en.wikipedia.org/wiki/Bath,_Somerset" 
-                        target="_blank">Bath, UK</a></b></em></u> for the last 30 years or 
-                        more,  I love the city and the people.<br>
+                    target="_blank">Bath, UK</a></b></em></u> for the last 30 years or 
+                    more,  I love the city and the people.<br>
                     <br>
                     Please read more about me and the kinds of services I can offer below.
                 </p>
-            
+                
                 <hr>
 
                 <h2 id="services"><u>Services I Offer</u></h2>
@@ -109,20 +93,18 @@
 
             </div>
 
-        </div>
-
         <div style="text-align: center;">
 
             <div style="width: 520px; display: inline-block;">
 
-                <a href="https://www.aat.org.uk/" target="_blank" style="text-decoration: none">
+                <a href="https://www.aat.org.uk/" target="_blank" style="text-decoration: none;">
                     <img src="images/AAT_logo.jpg" 
                     alt="Association of Accounting Technicians (AAT)" 
                     title="Association of Accounting Technicians (AAT)"
                     align="left">
                 </a>
 
-                <a href="https://www.xero.com/" target="_blank" style="text-decoration: none">
+                <a href="https://www.xero.com/" target="_blank" style="text-decoration: none;">
                     <img src="images/xero_logo.png" 
                     alt="Xero Accounting Software" 
                     title="Xero Accounting Software" 
@@ -130,13 +112,14 @@
                     align="center">
                 </a>
 
-                <a href="https://www.sage.com/" target="_blank" style="text-decoration: none">
+                <a href="https://www.sage.com/" target="_blank" style="text-decoration: none;">
                     <img src="images/Sage_logo.jpg" 
                     alt="Sage Accounts" 
                     title="Sage Accounts"
                     align="right">
                 </a>
 
+                <br>
                 <br>
             
                 <hr>
@@ -146,6 +129,8 @@
                 <hr>
             
             </div>
+
+        </div>
 
         </div>
 
